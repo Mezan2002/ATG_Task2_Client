@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const handleRegister = (e) => {
@@ -29,6 +30,19 @@ const Register = () => {
   };
   return (
     <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/logIn">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </ul>
+      </nav>
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
         <input type="text" name="userName" placeholder="User Name" />
