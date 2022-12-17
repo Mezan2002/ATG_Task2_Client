@@ -13,11 +13,12 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data._id) {
+          console.log(data);
           alert("Login Successfull!");
         }
       })
-      .then((err) => {
-        alert("Login Failed!");
+      .catch((err) => {
+        alert("Wrong Credential!");
       });
   };
   return (

@@ -1,0 +1,7 @@
+.createPost {
+  display: flex;
+  justify-content: center;
+}
+.createPost input {
+  width: 100%;
+}
