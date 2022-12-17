@@ -26,7 +26,9 @@ const Posts = () => {
         method: "DELETE",
       })
         .then((res) => res.json())
-        .then((data) => {});
+        .then((data) => {
+          // console.log(data);
+        });
     }
   };
   return (
@@ -44,26 +46,33 @@ const Posts = () => {
           </li>
         </ul>
       </nav>
-      <button>
-        <Link to="/createPost">Write a post</Link>
-      </button>
-      <h2>Posts</h2>
-      <div>
-        {posts.map((post) => (
-          <div key={post._id} className="postCard">
-            <h5>{post.post}</h5>
-            <button onClick={() => handleLike(post._id)}>
-              {post.like === "liked" ? (
-                <span className="likeBtn">Liked</span>
-              ) : (
-                <span>Like</span>
-              )}
-            </button>
-            <button>Comment</button>
-            <button>Edit</button>
-            <button onClick={() => handleDelete(post._id)}>Delete</button>
+      <div className="postHome">
+        <div>
+          <button>
+            <Link to="/createPost">Write a post</Link>
+          </button>
+          <h2>Posts</h2>
+          <div>
+            {posts.map((post) => (
+              <div key={post._id} className="postCard">
+                <h5>{post.post}</h5>
+                {post.like === "liked" ? (
+                  <button disabled className="likedBtn">
+                    Liked
+                  </button>
+                ) : (
+                  <button onClick={() => handleLike(post._id)}>Like</button>
+                )}
+
+                <button>Comment</button>
+                <button>
+                  <Link to={`/updatePost/${post._id}`}>Edit</Link>
+                </button>
+                <button onClick={() => handleDelete(post._id)}>Delete</button>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

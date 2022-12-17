@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CreatePost.css";
 
 const CreatePost = () => {
@@ -24,13 +24,28 @@ const CreatePost = () => {
       });
   };
   return (
-    <div className="createPost">
-      <form onSubmit={handlePost}>
-        <h2>Write a post</h2>
-        <textarea name="post" id="" cols="50" rows="20"></textarea>
-        <br />
-        <input type="submit" value="Post" />
-      </form>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/logIn">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </ul>
+      </nav>
+      <div className="post">
+        <form onSubmit={handlePost}>
+          <h2>Write a post</h2>
+          <textarea name="post" id="" cols="50" rows="20"></textarea>
+          <br />
+          <input type="submit" value="Post" />
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
   const handleLogIn = (e) => {
@@ -36,18 +37,22 @@ const Login = () => {
           </li>
         </ul>
       </nav>
-      <h2>Login</h2>
-      <form onSubmit={handleLogIn}>
-        <input type="text" name="userName" placeholder="User Name" />
-        <br />
-        <input
-          type="password"
-          name="userPassword"
-          placeholder="User Password"
-        />
-        <br />
-        <input type="submit" value="Log In" />
-      </form>
+      <div className="login">
+        <div>
+          <h2>Login</h2>
+          <form onSubmit={handleLogIn}>
+            <input type="text" name="userName" placeholder="User Name" />
+            <br />
+            <input
+              type="password"
+              name="userPassword"
+              placeholder="User Password"
+            />
+            <br />
+            <input type="submit" value="Log In" />
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

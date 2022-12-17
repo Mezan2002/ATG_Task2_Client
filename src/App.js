@@ -4,6 +4,7 @@ import CreatePost from "./Components/CreatePost/CreatePost";
 import Login from "./Components/Login/Login";
 import Posts from "./Components/Posts/Posts";
 import Register from "./Components/Register/Register";
+import UpdatedPost from "./Components/UpdatedPost/UpdatedPost";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,12 @@ function App() {
     {
       path: "/createPost",
       element: <CreatePost></CreatePost>,
+    },
+    {
+      path: "/updatePost/:id",
+      element: <UpdatedPost></UpdatedPost>,
+      loader: ({ params }) =>
+        fetch(`http://localhost:5000/updatedPost/${params.id}`),
     },
     {
       path: "/logIn",

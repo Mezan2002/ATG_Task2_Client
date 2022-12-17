@@ -1,7 +1,7 @@
-.createPost {
+.post {
   display: flex;
   justify-content: center;
 }
-.createPost input {
+.post input {
   width: 100%;
 }

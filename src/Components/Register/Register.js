@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
   const handleRegister = (e) => {
@@ -43,20 +44,24 @@ const Register = () => {
           </li>
         </ul>
       </nav>
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <input type="text" name="userName" placeholder="User Name" />
-        <br />
-        <input type="email" name="userEmail" placeholder="User Email" />
-        <br />
-        <input
-          type="password"
-          name="userPassword"
-          placeholder="User Password"
-        />
-        <br />
-        <input type="submit" value="Register" />
-      </form>
+      <div className="register">
+        <div>
+          <h2>Register</h2>
+          <form onSubmit={handleRegister}>
+            <input type="text" name="userName" placeholder="User Name" />
+            <br />
+            <input type="email" name="userEmail" placeholder="User Email" />
+            <br />
+            <input
+              type="password"
+              name="userPassword"
+              placeholder="User Password"
+            />
+            <br />
+            <input type="submit" value="Register" />
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
