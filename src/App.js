@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import CreatePost from "./Components/CreatePost/CreatePost";
+import ForgotPass from "./Components/ForgotPass/ForgotPass";
 import Login from "./Components/Login/Login";
 import Posts from "./Components/Posts/Posts";
 import Register from "./Components/Register/Register";
@@ -25,6 +26,10 @@ function App() {
     {
       path: "/logIn",
       element: <Login></Login>,
+    },
+    {
+      path: "/forgotPass",
+      element: <ForgotPass></ForgotPass>,
     },
     {
       path: "/register",

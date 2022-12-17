@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
+  const { user, setUser } = useContext(AuthContext);
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +15,7 @@ const Login = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        setUser(data.userName);
         if (data._id) {
           console.log(data);
           alert("Login Successfull!");
@@ -48,6 +51,8 @@ const Login = () => {
               name="userPassword"
               placeholder="User Password"
             />
+            <br />
+            <Link to="/forgotPass">Forgot Password?</Link>
             <br />
             <input type="submit" value="Log In" />
           </form>
