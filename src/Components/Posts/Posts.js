@@ -5,16 +5,18 @@ import "./Posts.css";
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/posts")
+    fetch("https://atg-server-tau.vercel.app/posts")
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);
   const handleLike = (id) => {
-    fetch(`http://localhost:5000/like/${id}`, {
-      method: "PUT",
+    const likeComment = { like: "Liked", comment: "Commneted", id };
+    fetch(`https://atg-server-tau.vercel.app/like&comment`, {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
+      body: JSON.stringify(likeComment),
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
@@ -22,7 +24,7 @@ const Posts = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you want to delete this post?");
     if (proceed) {
-      fetch(`http://localhost:5000/delete/${id}`, {
+      fetch(`https://atg-server-tau.vercel.app/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -31,6 +33,7 @@ const Posts = () => {
         });
     }
   };
+
   return (
     <div>
       <nav>
@@ -56,19 +59,21 @@ const Posts = () => {
             {posts.map((post) => (
               <div key={post._id} className="postCard">
                 <h5>{post.post}</h5>
-                {post.like === "liked" ? (
-                  <button disabled className="likedBtn">
-                    Liked
+                <div>
+                  {post.like === "liked&commented" ? (
+                    <button disabled className="likedBtn">
+                      Liked & Commented
+                    </button>
+                  ) : (
+                    <button onClick={() => handleLike(post._id)}>
+                      Like & Comment
+                    </button>
+                  )}
+                  <button>
+                    <Link to={`/updatePost/${post._id}`}>Edit</Link>
                   </button>
-                ) : (
-                  <button onClick={() => handleLike(post._id)}>Like</button>
-                )}
-
-                <button>Comment</button>
-                <button>
-                  <Link to={`/updatePost/${post._id}`}>Edit</Link>
-                </button>
-                <button onClick={() => handleDelete(post._id)}>Delete</button>
+                  <button onClick={() => handleDelete(post._id)}>Delete</button>
+                </div>
               </div>
             ))}
           </div>

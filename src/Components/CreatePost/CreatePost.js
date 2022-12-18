@@ -8,7 +8,7 @@ const CreatePost = () => {
     e.preventDefault();
     const post = e.target.post.value;
     const postData = { post };
-    fetch("http://localhost:5000/createPost", {
+    fetch("https://atg-server-tau.vercel.app/createPost", {
       method: "POST",
       headers: {
         "content-type": "application/json",

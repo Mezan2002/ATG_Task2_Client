@@ -8,7 +8,7 @@ const UpdatedPost = () => {
     e.preventDefault();
     const updatedPost = e.target.updatedPost.value;
     const postUpdated = { updatedPost };
-    fetch(`http://localhost:5000/postUpdated/${postOfUpdate._id}`, {
+    fetch(`https://atg-server-tau.vercel.app/postUpdated/${postOfUpdate._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

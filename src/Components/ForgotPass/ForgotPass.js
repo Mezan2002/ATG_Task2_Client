@@ -8,12 +8,13 @@ const ForgotPass = () => {
     const userName = e.target.userName.value;
     const newPass = e.target.newPass.value;
     const updatedPass = { newPass };
-    fetch(`http://localhost:5000/matchUserName?userName=${userName}`)
+    fetch(
+      `https://atg-server-tau.vercel.app/matchUserName?userName=${userName}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.userName);
         if (data.userName) {
-          fetch(`http://localhost:5000/recoverPass/${userName}`, {
+          fetch(`https://atg-server-tau.vercel.app/recoverPass/${userName}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -21,11 +22,16 @@ const ForgotPass = () => {
             body: JSON.stringify(updatedPass),
           })
             .then((res) => res.json())
-            .then((data) => console.log(data));
-          console.log("Hello");
+            .then((data) => {
+              if (data.modifiedCount === 1) {
+                alert("Password Updated Successfully!");
+              }
+            });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert("Sorry Wrong User Name!");
+      });
   };
   return (
     <div>

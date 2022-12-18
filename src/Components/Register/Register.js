@@ -15,7 +15,7 @@ const Register = () => {
       userEmail,
       userPassword,
     };
-    fetch("http://localhost:5000/registerUser", {
+    fetch("https://atg-server-tau.vercel.app/registerUser", {
       method: "POST",
       headers: {
         "content-type": "application/json",

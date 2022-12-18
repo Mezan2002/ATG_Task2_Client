@@ -4,14 +4,14 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const userName = form.userName.value;
     const userPassword = form.userPassword.value;
     fetch(
-      `http://localhost:5000/loggedInUser?userName=${userName}&userPassword=${userPassword}`
+      `https://atg-server-tau.vercel.app/loggedInUser?userName=${userName}&userPassword=${userPassword}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +22,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        alert("Wrong Credential!");
+        alert("Wrong Username Or Password!");
       });
   };
   return (

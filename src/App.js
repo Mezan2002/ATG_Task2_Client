@@ -21,7 +21,7 @@ function App() {
       path: "/updatePost/:id",
       element: <UpdatedPost></UpdatedPost>,
       loader: ({ params }) =>
-        fetch(`http://localhost:5000/updatedPost/${params.id}`),
+        fetch(`https://atg-server-tau.vercel.app/updatedPost/${params.id}`),
     },
     {
       path: "/logIn",
